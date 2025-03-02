@@ -11,7 +11,6 @@ class GeoIpDetector implements GeoIpDetectorInterface
 {
     public function __construct(
         private readonly ProviderInterface $provider,
-        private readonly string $namesLocale,
     ) {
     }
 
@@ -26,6 +25,6 @@ class GeoIpDetector implements GeoIpDetectorInterface
             $result->location->latitude,
             $result->location->longitude,
             $result->location->timeZone,
-        );        
+        );
     }
 }

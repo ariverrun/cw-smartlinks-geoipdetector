@@ -14,7 +14,8 @@ final class GetGeoByIpApiController extends AbstractController
 {
     #[Route('/api/v1/geo', methods: ['GET'], name: 'api_geo_get')]
     public function __invoke(
-        #[MapQueryParameter] string $ip,
+        #[MapQueryParameter]
+        string $ip,
         GetGeoByIpUseCaseInterface $useCase,
     ): JsonResponse {
         return $this->json([

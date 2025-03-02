@@ -53,3 +53,27 @@ cache_clear:
 
 composer_install:
 	${DOCKER_COMPOSE_PHP_EXEC} composer install -n
+
+##################
+## Analyze YAML files
+##################
+
+yamllint:
+	yamllint .
+
+##################
+## CS-Fixer
+##################
+
+cs_check:
+	${DOCKER_COMPOSE_PHP_EXEC} vendor/bin/php-cs-fixer fix --dry-run
+
+cs_fix:
+	${DOCKER_COMPOSE_PHP_EXEC} vendor/bin/php-cs-fixer fix
+
+##################
+## PHPStan analysis
+##################
+
+phpstan:
+	${DOCKER_COMPOSE_PHP_EXEC} vendor/bin/phpstan analyse src
