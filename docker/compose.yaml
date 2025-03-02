@@ -1,0 +1,15 @@
+services:
+  php:
+    build:
+      context: './../'
+      dockerfile: 'docker/php/Dockerfile'
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        USER_ID: "${USER_ID}"
+        GROUP_ID: "${GROUP_ID}"
+    volumes:
+      - ..:/var/www/html/
+    healthcheck:
+      test: ["CMD", "php", "-v"]
+      timeout: 5s
+      retries: 3

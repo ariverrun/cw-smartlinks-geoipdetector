@@ -20,5 +20,16 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Service\GeoIpDetector:
+        arguments:
+            $namesLocale: en
+
+    GeoIp2\ProviderInterface:
+        class: GeoIp2\Database\Reader
+        arguments:
+            $filename: '%env(resolve:GEOIP2_DATABASE_FILE)%'
+            $locales:
+                - en
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
