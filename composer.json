@@ -13,6 +13,7 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.2.*",
         "symfony/runtime": "7.2.*",
+        "symfony/security-bundle": "7.2.*",
         "symfony/yaml": "7.2.*"
     },
     "config": {
@@ -69,6 +70,8 @@
         "friendsofphp/php-cs-fixer": "^3.70",
         "kubawerlos/php-cs-fixer-custom-fixers": "^3.23",
         "phpstan/phpstan": "^2.1",
-        "symfony/var-dumper": "7.2.*"
+        "symfony/stopwatch": "7.2.*",
+        "symfony/var-dumper": "7.2.*",
+        "symfony/web-profiler-bundle": "7.2.*"
     }
 }

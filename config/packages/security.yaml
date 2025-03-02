@@ -1,0 +1,24 @@
+security:
+    providers:
+        users_in_memory: { memory: null }
+        api_user_provider:
+            id: App\Security\ApiUserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api:
+            stateless: true
+            provider: api_user_provider
+            custom_authenticators:
+                - App\Security\ApiKeyAuthenticator
+
+        main:
+            lazy: true
+            provider: api_user_provider
+
+    access_control:
+        - { path: ^/api/v1/healthCheck, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: ROLE_USER }
