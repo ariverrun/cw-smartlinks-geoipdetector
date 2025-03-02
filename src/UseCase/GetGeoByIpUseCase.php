@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\UseCase;
 
 use App\Dto\GeoDto;
+use App\Exception\IpIsNotFoundException;
 use App\Service\GeoIpDetectorInterface;
+use Throwable;
 
 class GetGeoByIpUseCase implements GetGeoByIpUseCaseInterface
 {
@@ -16,6 +18,10 @@ class GetGeoByIpUseCase implements GetGeoByIpUseCaseInterface
 
     public function __invoke(string $ipAddress): GeoDto
     {
-        return $this->geoIpDetector->detectGeoByIp($ipAddress);
+        try {
+            return $this->geoIpDetector->detectGeoByIp($ipAddress);
+        } catch (Throwable $e) {
+            throw new IpIsNotFoundException(previous: $e);
+        }
     }
 }
