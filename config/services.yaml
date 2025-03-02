@@ -12,6 +12,10 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Security\ApiUserProvider:
+        arguments:
+            $apiKeys: '%env(json:CLIENT_API_KEYS)%'
+
     GeoIp2\ProviderInterface:
         class: GeoIp2\Database\Reader
         arguments:
