@@ -25,6 +25,9 @@ dc_rebuild_and_up: #stop, build services again and up them
 	${DOCKER_COMPOSE} build
 	${DOCKER_COMPOSE} up -d --remove-orphans
 
+dc_network:
+	docker network create -d bridge cw-smartlinks-geoipdetector-network
+
 dc_ps: #show containers list
 	${DOCKER_COMPOSE} ps -a
 
@@ -36,6 +39,12 @@ dc_enter_php: #enter php container
 
 dc_logs_php: #show php container logs
 	${DOCKER_COMPOSE} logs php
+
+dc_enter_nginx: #enter nginx container
+	${DOCKER_COMPOSE} exec nginx bash
+
+dc_logs_nginx: #show nginx container logs
+	${DOCKER_COMPOSE} logs nginx
 
 ##################
 ## Cache
