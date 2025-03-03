@@ -13,3 +13,21 @@ services:
       test: ["CMD", "php", "-v"]
       timeout: 5s
       retries: 3
+    networks:
+      - default
+      - cw-smartlinks-geoipdetector-network
+
+  nginx:
+    image: nginx:1.25
+    volumes:
+      - ../docker/nginx/conf.d:/etc/nginx/conf.d
+      - ..:/var/www/html/
+    depends_on:
+      - php
+    networks:
+      - default
+      - cw-smartlinks-geoipdetector-network
+
+networks:
+  cw-smartlinks-geoipdetector-network:
+    external: true
