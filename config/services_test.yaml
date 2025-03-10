@@ -1,0 +1,10 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    GeoIp2\ProviderInterface:
+        lazy: true
+        class: null
